@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Fleet Control Login</ion-title>
+  </ion-navbar>
+</ion-header>
+  
+  
+<ion-content padding>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+        <ion-item [ngClass]="{'error-border':!authForm.controls.username.valid && authForm.controls.username.touched}">
+            <ion-label floating>Username</ion-label>
+            <ion-input formControlName="username" type="text"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="authForm.controls.username.hasError('required') && authForm.controls.username.touched">
+            <p>Sorry, field username is required!</p>
+        </ion-item>
+  
+        <ion-item [ngClass]="{'error-border':!authForm.controls.password.valid && authForm.controls.password.touched}">
+            <ion-label floating>Password</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="authForm.controls.password.hasError('required') && authForm.controls.password.touched">
+            <p>Sorry, field password is required!</p>
+        </ion-item>
+
+        <ion-item [ngClass]="{'error-border':!authForm.controls.server.valid && authForm.controls.server.touched}">
+          <ion-label floating>Server</ion-label>
+          <ion-input formControlName="server" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="authForm.controls.server.hasError('required') && authForm.controls.server.touched">
+          <p>Sorry, field Server is required!</p>
+      </ion-item>
+
+      <ion-item [ngClass]="{'error-border':!authForm.controls.database.valid && authForm.controls.database.touched}">
+        <ion-label floating>Database</ion-label>
+        <ion-input formControlName="database" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="authForm.controls.database.hasError('required') && authForm.controls.database.touched">
+        <p>Sorry, field database is required!</p>
+    </ion-item>
+               
+  
+        <button ion-button full color="primary" [disabled]="!authForm.valid" style="margin-top: 20px;" type="submit">Authenticate</button>        
+    </form>
+</ion-content>
