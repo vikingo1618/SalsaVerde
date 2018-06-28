@@ -5,30 +5,43 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
 import { HomePage } from '../pages/home/home';
 import { AuthPage } from '../pages/auth/auth';
+import { DevicesPage } from '../pages/devices/devices';
+
+import { GeotabServiceProvider } from '../providers/geotab-service/geotab-service';
+import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    AuthPage
+    AuthPage,
+    DevicesPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    AuthPage
+    AuthPage,
+    DevicesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GeotabServiceProvider,
+    HttpModule,
+    HttpClientModule,
+    HttpClient
   ]
 })
 export class AppModule {}

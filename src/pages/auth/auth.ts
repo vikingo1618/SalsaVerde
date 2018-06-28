@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
 import { HomePage } from '../home/home';
  
+import { DevicesPage } from '../devices/devices';
+
 @IonicPage()
 @Component({
   selector: 'page-auth',
@@ -14,7 +16,8 @@ export class AuthPage {
  
     authForm: FormGroup;
  
-    constructor(public nav: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+    constructor(public nav: NavController, public navParams: NavParams, 
+                public formBuilder: FormBuilder ) {
  
         this.nav = nav;
  
@@ -32,9 +35,9 @@ export class AuthPage {
             window.localStorage.setItem('password', value.password);
             window.localStorage.setItem('server', value.server);
             window.localStorage.setItem('database', value.database);
-
-
-            //geotabApiCall();
+            this.nav.push(DevicesPage);
+        }
+        else{
             this.nav.push(HomePage);
         }
     }   
