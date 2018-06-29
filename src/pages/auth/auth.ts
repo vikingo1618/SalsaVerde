@@ -17,15 +17,15 @@ export class AuthPage {
     authForm: FormGroup;
  
     constructor(public nav: NavController, public navParams: NavParams, 
-                public formBuilder: FormBuilder ) {
+                public formBuilder: FormBuilder) {
  
         this.nav = nav;
  
         this.authForm = formBuilder.group({
-            username: ['', Validators.compose([Validators.required])],
-            password: ['', Validators.compose([Validators.required])],
-            server: ['', Validators.compose([Validators.required])],
-            database:['',Validators.compose([Validators.required])]
+            username: ['uriel_270195@hotmail.com', Validators.compose([Validators.required])],
+            password: ['Irvin1.', Validators.compose([Validators.required])],
+            server: ['my524.geotab.com', Validators.compose([Validators.required])],
+            database:['GMRS',Validators.compose([Validators.required])]
         });
     }
  

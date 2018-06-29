@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 declare var GeotabApi: any;
 
 @Injectable()
 export class GeotabServiceProvider {
 
+  
   api: any;
-  constructor() {
+  constructor(public http: HttpClient) {
     console.log('Injected!\n');
     let server = window.localStorage.getItem('server');
     console.log('Server: ',server);
@@ -19,20 +21,22 @@ export class GeotabServiceProvider {
 
     this.api = GeotabApi(function (authenticationCallback){
       authenticationCallback(server, database, userName,password, function (errorString) {
+        console.log("Error: ", errorString);
       });
     });
-
   }
 
 
   getAllDevices (num, devicesCallback, onerror){
-    this.api.call("this.http.get", {
-      "typename": "Device",
+    this.api.call("Get", {
+      "typeName": "Device",
       "resultsLimit" : num
-    }, function(result){
+    }, 
+    function(result){
       console.log("Done!\n", result);
       devicesCallback(result);
-    }, function(e){
+    }, 
+    function(e){
       console.error("Failed!\n", e);
       onerror(e);
     });

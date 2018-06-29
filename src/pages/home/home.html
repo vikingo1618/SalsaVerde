@@ -5,14 +5,10 @@
 </ion-header>
   
 <ion-content padding>
-  <h1>Welcome {{username}}</h1>
+  <h1>Welcome to Fleet Control</h1>
 
-<ion-item *ngIf="username == null">
+<ion-item>
     <button ion-button full color="primary" style="margin-top: 20px;" (click)="logout()">Login</button>
-</ion-item>
-
-<ion-item *ngIf="username != null">
-  <button ion-button full color="primary" style="margin-top: 20px;" (click)="logout()">Logout</button>
 </ion-item>
   
 </ion-content>
