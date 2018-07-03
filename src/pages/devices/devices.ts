@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { GeotabServiceProvider } from '../../providers/geotab-service/geotab-service';
 
 import { HomePage } from '../home/home';
+import { MapPage } from '../map/map';
 
 
 @IonicPage()
@@ -13,20 +14,22 @@ import { HomePage } from '../home/home';
 })
 export class DevicesPage implements OnInit {
 
+  public devices: any[];
   constructor(public nav: NavController, public navParams: NavParams,
-              private geotabServiceProvider : GeotabServiceProvider ) {
+              private geotabServiceProvider : GeotabServiceProvider, 
+              private cdRef:ChangeDetectorRef) {
   }
 
   ngOnInit(){
-    this.geotabServiceProvider.getAllDevices(10, function(result){
-      console.log('Devices', result);
-  },
-function(e){
-  console.log('Error while retrieveng devices: ', e);
-});
+    
   }
 
   ionViewDidLoad() {
+    this.geotabServiceProvider.getAllDevices(10)
+    .then((result) => {
+      this.devices = result;
+      this.cdRef.detectChanges(); 
+    });
   }
 
   logout() {
@@ -36,7 +39,13 @@ function(e){
     window.localStorage.removeItem('database');
 
     this.nav.setRoot(HomePage);
-    this.nav.popToRoot();         
+    this.nav.popToRoot();
+    window.localStorage.clear();
+    console.clear();     
 }   
+
+goToMap(){
+  this.nav.push(MapPage);
+}
 
 }

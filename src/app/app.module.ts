@@ -8,11 +8,13 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { AuthPage } from '../pages/auth/auth';
+import { MenuPage } from '../pages/menu/menu';
 import { DevicesPage } from '../pages/devices/devices';
 
 import { GeotabServiceProvider } from '../providers/geotab-service/geotab-service';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
+import { MapPage } from '../pages/map/map';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HttpModule } from '@angular/http';
     MyApp,
     HomePage,
     AuthPage,
-    DevicesPage
+    MenuPage,
+    DevicesPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { HttpModule } from '@angular/http';
     MyApp,
     HomePage,
     AuthPage,
-    DevicesPage
+    MenuPage,
+    DevicesPage,
+    MapPage
   ],
   providers: [
     StatusBar,

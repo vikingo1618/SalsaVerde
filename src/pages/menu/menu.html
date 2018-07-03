@@ -1,0 +1,43 @@
+
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-title>Menu</ion-title>
+
+    <ion-buttons end>
+        <button ion-button end icon-only (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </button> 
+        </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-card>
+        <ion-card-header>
+          Filter Vehicles
+        </ion-card-header>
+      
+        <ion-list>
+          <button ion-item (click)="goToDevices()">
+            <ion-icon name="bus" item-start></ion-icon>
+            Confined
+          </button>
+      
+          <button ion-item (click)="goToDevices()">
+            <ion-icon name="compass" item-start></ion-icon>
+            Moving
+          </button>
+      
+          <button ion-item (click)="goToMap()">
+            <ion-icon name="locate" item-start></ion-icon>
+            Location Map
+          </button>
+                
+        </ion-list>
+      </ion-card>
+</ion-content>

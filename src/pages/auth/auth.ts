@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
 import { HomePage } from '../home/home';
  
-import { DevicesPage } from '../devices/devices';
+import { MenuPage } from '../menu/menu';
 
 @IonicPage()
 @Component({
@@ -22,10 +22,10 @@ export class AuthPage {
         this.nav = nav;
  
         this.authForm = formBuilder.group({
-            username: ['uriel_270195@hotmail.com', Validators.compose([Validators.required])],
-            password: ['Irvin1.', Validators.compose([Validators.required])],
+            username: ['zombie.robot33@gmail.com    ', Validators.compose([Validators.required])],
+            password: ['.g30t4b.1618', Validators.compose([Validators.required])],
             server: ['my524.geotab.com', Validators.compose([Validators.required])],
-            database:['GMRS',Validators.compose([Validators.required])]
+            database:['Drakkar',Validators.compose([Validators.required])]
         });
     }
  
@@ -35,7 +35,7 @@ export class AuthPage {
             window.localStorage.setItem('password', value.password);
             window.localStorage.setItem('server', value.server);
             window.localStorage.setItem('database', value.database);
-            this.nav.push(DevicesPage);
+            this.nav.push(MenuPage);
         }
         else{
             this.nav.push(HomePage);

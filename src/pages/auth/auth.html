@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Fleet Control Login</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
   
@@ -41,8 +41,6 @@
     <ion-item *ngIf="authForm.controls.database.hasError('required') && authForm.controls.database.touched">
         <p>Sorry, field database is required!</p>
     </ion-item>
-               
-  
-        <button ion-button full color="primary" [disabled]="!authForm.valid" style="margin-top: 20px;" type="submit">Authenticate</button>        
+        <button ion-button [disabled]="!authForm.valid" type="submit" block>Authenticate</button>        
     </form>
 </ion-content>

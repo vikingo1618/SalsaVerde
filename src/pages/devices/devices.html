@@ -1,11 +1,22 @@
 <ion-header>
-  <ion-navbar hideBackButton>
+  <ion-navbar>
     <ion-title>Devices</ion-title>
+    <ion-buttons end>
+        <button ion-button end icon-only (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </button> 
+        </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-  <button ion-button full color="primary" style="margin-top: 20px;" (click)="logout()">Logout</button> 
-  </ion-item>
+  <ion-list>
+   <ion-item *ngFor="let device of devices">
+      <h2> Vehicle {{device.id}}, {{device.name}}</h2>
+      <p>Status: {{device.idleMinutes}}</p>
+      <button ion-button clear icon-only item-end (click)="goToMap()">
+        <ion-icon name="locate"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>

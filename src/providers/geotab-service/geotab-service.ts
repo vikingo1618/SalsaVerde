@@ -9,37 +9,39 @@ export class GeotabServiceProvider {
   
   api: any;
   constructor(public http: HttpClient) {
+  }
+
+  launchGeotabService(){
     console.log('Injected!\n');
-    let server = window.localStorage.getItem('server');
+    let server = localStorage.getItem('server');
     console.log('Server: ',server);
-    let database = window.localStorage.getItem('database');
+    let database = localStorage.getItem('database');
     console.log('Database: ',database);
-    let userName = window.localStorage.getItem('username');
+    let userName = localStorage.getItem('username');
     console.log('Username: ',userName);
-    let password = window.localStorage.getItem('password');
-    console.log('Password: ',password);
+    let password = localStorage.getItem('password');
 
     this.api = GeotabApi(function (authenticationCallback){
       authenticationCallback(server, database, userName,password, function (errorString) {
-        console.log("Error: ", errorString);
+        console.log('Constructed!');
       });
     });
   }
 
 
-  getAllDevices (num, devicesCallback, onerror){
-    this.api.call("Get", {
-      "typeName": "Device",
-      "resultsLimit" : num
-    }, 
-    function(result){
-      console.log("Done!\n", result);
-      devicesCallback(result);
-    }, 
-    function(e){
-      console.error("Failed!\n", e);
-      onerror(e);
+  getAllDevices (num){
+    this.launchGeotabService();
+    return new Promise<any[]>((resolve, reject) => {
+      this.api.call("Get", {
+        "typeName": "Device",
+        "resultsLimit" : num
+      }, 
+      (result) => {
+        console.log("Done!\n", result);
+        resolve(result);
+      });
     });
+    
   }
 
 }

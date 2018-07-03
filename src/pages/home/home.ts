@@ -16,13 +16,7 @@ export class HomePage {
         this.username = window.localStorage.getItem('username');
     }
  
-    logout() {
-        window.localStorage.removeItem('username');
-        window.localStorage.removeItem('password');
-        window.localStorage.removeItem('server');
-        window.localStorage.removeItem('database');
- 
-        this.nav.setRoot(AuthPage);
-        this.nav.popToRoot();         
+    goToAuthenticationPage() { 
+        this.nav.push(AuthPage);         
     }    
 }
