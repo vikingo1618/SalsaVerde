@@ -41,7 +41,5 @@ export class GeotabServiceProvider {
         resolve(result);
       });
     });
-    
   }
-
 }
